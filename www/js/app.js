@@ -9,6 +9,7 @@ angular.module('starter', ['ionic',
   'ionic.service.core',
   'ionic.service.push',
   'ionic.service.analytics',
+  'ionic.service.deploy',
   'starter.controllers'
 ])
 

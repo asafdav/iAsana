@@ -24,6 +24,12 @@
         <ion-item menu-close href="#/app/tasks">
           Tasks
         </ion-item>
+        <ion-item menu-close ng-click="checkForUpdates()" ng-if="!hasUpdate">
+          Check for update
+        </ion-item>
+        <ion-item menu-close ng-click="doUpdate()" ng-if="hasUpdate">
+          Update now!
+        </ion-item>
         <ion-item ng-if="token">
           <input type="text" ng-model="token" />
         </ion-item>

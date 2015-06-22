@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($rootScope, $scope, $ionicModal, $timeout, $ionicUser, $ionicPush) {
+.controller('AppCtrl', function($rootScope, $scope, $ionicModal, $timeout, $ionicUser, $ionicPush, $ionicDeploy) {
   
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -8,6 +8,27 @@ angular.module('starter.controllers', [])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+
+  $scope.checkForUpdates = function() {
+    console.log('Ionic Deploy: Checking for updates');
+    $ionicDeploy.check().then(function(hasUpdate) {
+      console.log('Ionic Deploy: Update available: ' + hasUpdate);
+      $scope.hasUpdate = hasUpdate;
+    }, function(err) {
+      console.error('Ionic Deploy: Unable to check for updates', err);
+    });
+  };
+
+  // Update app code with new release from Ionic Deploy
+  $scope.doUpdate = function() {
+    $ionicDeploy.update().then(function(res) {
+      alert('Ionic Deploy: Your app was updated!');
+    }, function(err) {
+      console.log('Ionic Deploy: Update error! ', err);
+    }, function(prog) {
+      console.log('Ionic Deploy: Progress... ', prog);
+    });
+  };
 
   // Identifies a user with the Ionic User service
   $scope.identifyUser = function() {
