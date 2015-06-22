@@ -43,14 +43,20 @@ angular.module('starter.controllers', [])
 
 .controller('TaskCtrl', function($scope) {
   $scope.tasks = [
-    { title: 'Change the header color', id: 1 },
-    { title: 'Add Ionicons to the header', id: 2 },
-    { title: 'Update the menu items', id: 3 },
-    { title: 'Implement a single task modal', id: 4 },
-    { title: 'Add push notifications', id: 5 },
-    { title: 'Share with the team', id: 6 },
-    { title: 'Integrate analytic service', id: 7 }
+    { title: 'Change the header color', id: 1, done: false },
+    { title: 'Add Ionicons to the header', id: 2, done: false },
+    { title: 'Update the menu items', id: 3, done: false },
+    { title: 'Implement a single task modal', id: 4, done: false },
+    { title: 'Add push notifications', id: 5, done: false },
+    { title: 'Share with the team', id: 6, done: false },
+    { title: 'Integrate analytic service', id: 7, done: false }
   ];
+
+  $scope.completeTask = function(taskId) {
+    $scope.tasks.forEach(function(task){
+      if (task.id === taskId) task.done = true;
+    })
+  }
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

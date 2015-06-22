@@ -21,3 +21,21 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+.task-item {
+  .item-content {
+    padding: 0px;
+  }
+}
+
+.task-card {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  height: 100%;
+
+  &.green {
+    background-color: #0dbd39;
+    color: white;
+  }
+}

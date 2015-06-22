@@ -5,8 +5,15 @@
   </ion-nav-buttons>
   <ion-content>
     <ion-list>
-      <ion-item collection-repeat="task in tasks" href="#/app/task/{{task.id}}">
-        {{task.title}}
+      <ion-item class="task-item" ng-repeat="task in tasks | filter:{done: false}" href="#/app/task/{{task.id}}">
+        <ion-slide-box on-slide-changed="completeTask(task.id, $index)" show-pager="false">
+          <ion-slide>
+            <div class="task-card">{{task.title}}</div>
+          </ion-slide>
+          <ion-slide>
+            <div class="task-card green"><i class="icon ion-checkmark-round"></i></div>
+          </ion-slide>
+        </ion-slide-box>
       </ion-item>
     </ion-list>
   </ion-content>
