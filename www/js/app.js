@@ -8,11 +8,15 @@ angular.module('starter', ['ionic',
   'ngCordova',
   'ionic.service.core',
   'ionic.service.push',
+  'ionic.service.analytics',
   'starter.controllers'
 ])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $ionicAnalytics) {
   $ionicPlatform.ready(function() {
+
+    $ionicAnalytics.register(); // Register analytics
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
