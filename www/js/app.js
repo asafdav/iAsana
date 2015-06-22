@@ -80,6 +80,7 @@ angular.module('starter', ['ionic',
   $ionicAppProvider.identify({
     app_id: '3ae26e4d',
     api_key: '4017a5ce1f4d23e4f94b621b7385691cce40c0e9a35a3105',
+    gcm_id: '771679877972',
     dev_push: true
   });
 }]);

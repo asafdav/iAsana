@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicUser, $ionicPush) {
+.controller('AppCtrl', function($rootScope, $scope, $ionicModal, $timeout, $ionicUser, $ionicPush) {
   
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -21,15 +21,12 @@ angular.module('starter.controllers', [])
 
     // Add some metadata to your user object.
     angular.extend(user, {
-      name: 'Ionitron',
+      name: $scope.loginData.username,
       bio: 'I come from planet Ion'
     });
 
     // Identify your user with the Ionic User Service
-    $ionicUser.identify(user).then(function(){
-      $scope.identified = true;
-      alert('Identified user ' + user.name + '\n ID ' + user.user_id);
-    });
+    return $ionicUser.identify(user);
   };
 
   // Registers a device for push notifications and stores its token
@@ -49,6 +46,12 @@ angular.module('starter.controllers', [])
       }
     });
   };
+
+  // Handles incoming device tokens
+  $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
+    console.log('Ionic Push: Got token ', data.token, data.platform);
+    $scope.token = data.token;
+  });
 
   
   // Form data for the login modal
@@ -73,13 +76,10 @@ angular.module('starter.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
+    $scope.identifyUser().then(function() {
+      $scope.pushRegister();
       $scope.closeLogin();
-    }, 1000);
+    });
   };
 })
 
