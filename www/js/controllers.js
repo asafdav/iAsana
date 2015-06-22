@@ -41,14 +41,15 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+.controller('TaskCtrl', function($scope) {
+  $scope.tasks = [
+    { title: 'Change the header color', id: 1 },
+    { title: 'Add Ionicons to the header', id: 2 },
+    { title: 'Update the menu items', id: 3 },
+    { title: 'Implement a single task modal', id: 4 },
+    { title: 'Add push notifications', id: 5 },
+    { title: 'Share with the team', id: 6 },
+    { title: 'Integrate analytic service', id: 7 }
   ];
 })
 

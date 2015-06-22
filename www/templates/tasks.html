@@ -1,0 +1,13 @@
+<ion-view view-title="My Tasks">
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear ion-search"></button>
+    <button class="button button-icon button-clear ion-ios-bell"></button>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-list>
+      <ion-item collection-repeat="task in tasks" href="#/app/task/{{task.id}}">
+        {{task.title}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

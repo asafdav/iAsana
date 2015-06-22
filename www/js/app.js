@@ -13,7 +13,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
-    if (window.StatusBar) {
+    if (window.StatusBar)  {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
@@ -47,12 +47,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     }
   })
-    .state('app.playlists', {
-      url: "/playlists",
+    .state('app.tasks', {
+      url: "/tasks",
       views: {
         'menuContent': {
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
+          templateUrl: "templates/tasks.html",
+          controller: 'TaskCtrl'
         }
       }
     })
@@ -67,5 +67,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/tasks');
 });
